@@ -1,0 +1,9 @@
+spark-nlp==3.4.3 
+pyspark
+ipykernel
+ipywidgets
+python-dotenv
+pandas
+graphdatascience
+plotly
+kaleido

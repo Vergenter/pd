@@ -1,0 +1,1 @@
+(a:Article{id:int,abstract:str,category:int,predicted_category:int,title:str,year:int})-[Cites]->(Article)

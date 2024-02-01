@@ -1,0 +1,28 @@
+version: '3'
+services:
+  neo4j:
+    image: neo4j:5.11.0
+    hostname: neo4j
+    container_name: testneo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
+    volumes:
+      - $HOME/neo4j/data:/data
+      - $HOME/neo4j/logs:/logs
+      - $HOME/neo4j/import:/var/lib/neo4j/import
+      - $HOME/neo4j/plugins:/plugins
+    environment:
+      NEO4J_AUTH: "neo4j/testtest"
+      NEO4J_apoc_export_file_enabled: "true"
+      NEO4J_apoc_import_file_enabled: "true"
+      NEO4J_apoc_import_file_use__neo4j__config: "true"
+      NEO4JLABS_PLUGINS: '["apoc","graph-data-science"]'
+      NEO4J_dbms_memory_heap_initial__size: "12G"
+      NEO4J_dbms_memory_heap_max__size: "16G"
+      NEO4J_dbms_memory_transaction_max__size: "12G"
+
+
+
+# docker run --interactive --tty --rm --volume=$HOME/neo4j/data:/data neo4j/neo4j-admin:5.11.0 neo4j-admin database load --from-path=/var/lib/neo4j/data/dump neo4j -overwrite-destination=true
